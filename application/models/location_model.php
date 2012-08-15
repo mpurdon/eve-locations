@@ -104,7 +104,6 @@ class Location_model extends CI_Model
 		$date = str_replace('.', '-', $rawDate);
 
 		// Get the location details from the notice
-		$locationPattern = "#(?:Sh|H)e is (?:(?:at (.*?) station)?)in the (.*?) system, (.*?) constellation of (?:(?:the )?)(.*?) region.#";
 		$locationPattern = "#(?:Sh|H)e is (?:(?:at (.*?) station ?)?)in the (.*?) system, (.*?) constellation of (?:(?:the )?)(.*?) region.#";
 		preg_match($locationPattern, $notice, $matches);
 

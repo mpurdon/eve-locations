@@ -2,7 +2,7 @@
 	<table>
 	<thead>
 		<tr>
-			<td colspan="6">Found <?php echo $num_locations; ?> locations</td>
+			<td colspan="6">Found <?php echo $num_locations; ?> locations<span id="refresh_box"><input type="checkbox" id="do_refresh"/></span></td>
 		</tr>
 		<tr>
 			<?php foreach ($fields as $title => $field): ?>
@@ -18,7 +18,7 @@
 			<td><?php echo $location->pilot; ?><span class="search_link"><?php echo anchor(current_url() . '?pilot=' . $location->pilot, '[?]'); ?></span></td>
 			<td><?php echo timespan(strtotime($location->date)),' ago'; ?></td>
 			<td><?php echo $location->station; ?></td>
-			<td><?php echo $location->system; ?><span class="search_link"><?php echo anchor(current_url() . '?system=' . $location->system, '[?]'); ?></span></td>
+			<td><span class="set_system"><?php echo $location->system; ?></span><span class="search_link"><?php echo anchor(current_url() . '?system=' . $location->system, '[?]'); ?></span></td>
 			<td><?php echo $location->constellation; ?><span class="search_link"><?php echo anchor(current_url() . '?constellation=' . $location->constellation, '[?]'); ?></span></td>
 			<td><?php echo $location->region; ?><span class="search_link"><?php echo anchor(current_url() . '?region=' . $location->region, '[?]'); ?></span></td>
 		</tr>

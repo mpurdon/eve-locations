@@ -19,8 +19,9 @@ class Location_model extends CI_Model
 		$sort_by = (in_array($sort_by, array('pilot', 'date', 'station', 'system', 'constellation', 'region')) ? $sort_by : 'date');
 		$sort_dir = ($sort_dir == 'desc' ? 'desc' : 'asc');
 
-		$query = $this->db->select('pilot, date, station, system, constellation, region', false)
+		$query = $this->db->select('location.pilot, location.date, location.station, location.system, location.constellation, location.region, system.system_id', false)
 		                  ->from('location')
+		                  ->join('system', 'location.system = system.system_name')
 		                  ->limit($limit, $offset)
 						  ->order_by($sort_by, $sort_dir);
 

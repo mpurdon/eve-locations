@@ -18,7 +18,7 @@
 			<td><?php echo $location->pilot; ?><span class="bc_link"><a href="http://eve.battleclinic.com/killboard/combat_record.php?type=player&name=<?php echo $location->pilot; ?>#losses" target="_new">[bc]</a></span></span><span class="search_link"><?php echo anchor(current_url() . '?pilot=' . $location->pilot, '[?]'); ?></span></td>
 			<td><?php echo timespan(strtotime($location->date)),' ago'; ?></td>
 			<td><?php echo $location->station; ?></td>
-			<td><span class="set_system"><?php echo $location->system; ?></span><span class="search_link"><?php echo anchor(current_url() . '?system=' . $location->system, '[?]'); ?></span></td>
+			<td><a class="set_system" id="<?php echo $location->system_id; ?>"><?php echo $location->system; ?></a><span class="search_link"><?php echo anchor(current_url() . '?system=' . $location->system, '[?]'); ?></span></td>
 			<td><?php echo $location->constellation; ?><span class="search_link"><?php echo anchor(current_url() . '?constellation=' . $location->constellation, '[?]'); ?></span></td>
 			<td><?php echo $location->region; ?><span class="search_link"><?php echo anchor(current_url() . '?region=' . $location->region, '[?]'); ?></span></td>
 		</tr>

@@ -52,12 +52,14 @@ $(document).ready(function() {
 	
 	setTimeout("refreshList()", 300000);
 	
-	$('.set_system').click(function(event) {
+	$('a.set_system').click(function(event) {
 		if (typeof CCPEVE == 'undefined') {
 			return false;
 		}
 		
-		CCPEVE.setDestination();
+		var system_id = $(this).attr('id');
+		
+		CCPEVE.setDestination(system_id);
 		
 		return false;
 	});

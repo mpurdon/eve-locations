@@ -2,7 +2,7 @@
 	<table>
 	<thead>
 		<tr>
-			<td colspan="6">Found <?php echo $num_locations; ?> locations<span id="refresh_box"><input type="checkbox" id="do_refresh"/></span></td>
+			<td colspan="6">Found <?php echo $num_locations; ?> locations<span id="refresh_box"><input type="checkbox" id="do_refresh"/>Refresh Automatically</span></td>
 		</tr>
 		<tr>
 			<?php foreach ($fields as $title => $field): ?>

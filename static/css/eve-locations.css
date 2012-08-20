@@ -24,10 +24,10 @@ th a:visited {
         color: #000;
 }
 th.sort_asc:after {
-        content: ".";
+        content: "↑";
 }
 th.sort_desc:after {
-        content: ".";
+        content: "↓";
 }
 td {
         border:1px solid black;

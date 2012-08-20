@@ -40,6 +40,10 @@ span.search_link {
         float:right;
         margin-left: 5px;
 }
+span.bc_link {
+        float:right;
+        margin-left: 5px;
+}
 ul#navigation {
         list-style:none;
         padding:0px;

@@ -3,6 +3,7 @@
 		<li>Click on a column name to sort</li>
 		<li>Click on a [?] link to filter by that value</li>
 		<li>Click the [bc] link to see the pilot's Battleclinic losses</li>
+		<li>Click the [dl] link to see the dotlan security map for the system</li>
 		<li>Click on the system name to set that system as your destination</li>
 	</ul>
 	<table>
@@ -21,10 +22,28 @@
 	<tbody>
 	<?php foreach ($locations as $location):?>
 		<tr>
-			<td><?php echo $location->pilot; ?><span class="bc_link"><a href="http://eve.battleclinic.com/killboard/combat_record.php?type=player&name=<?php echo rawurlencode($location->pilot); ?>#losses" target="_new">[bc]</a></span></span><span class="search_link"><?php echo anchor(current_url() . '?pilot=' . $location->pilot, '[?]'); ?></span></td>
+			<td>
+				<?php echo $location->pilot; ?>
+				<span class="bc_link">
+					<a href="http://eve.battleclinic.com/killboard/combat_record.php?type=player&name=<?php echo rawurlencode($location->pilot); ?>#losses" target="_new">[bc]</a>
+				</span>
+				<span class="search_link">
+					<?php echo anchor(current_url() . '?pilot=' . $location->pilot, '[?]'); ?>
+				</span>
+			</td>
 			<td><?php echo timespan(strtotime($location->date)),' ago'; ?></td>
 			<td><?php echo $location->station; ?></td>
-			<td><span class="set_system"><a href="#" id="<?php echo $location->system_id; ?>"><?php echo $location->system; ?></a></span><span class="search_link"><?php echo anchor(current_url() . '?system=' . $location->system, '[?]'); ?></span></td>
+			<td>
+				<span class="set_system">
+					<a href="#" id="<?php echo $location->system_id; ?>"><?php echo $location->system; ?></a>
+				</span>
+				<span class="dl_link">
+					<?php echo anchor('http://evemaps.dotlan.net/map/' . str_replace(' ', '_', $location->region) . '/' . $location->system . '#sec', '[dl]'); ?>
+				</span>
+				<span class="search_link">
+					<?php echo anchor(current_url() . '?system=' . $location->system, '[?]'); ?>
+				</span>
+			</td>
 			<td><?php echo $location->constellation; ?><span class="search_link"><?php echo anchor(current_url() . '?constellation=' . $location->constellation, '[?]'); ?></span></td>
 			<td><?php echo $location->region; ?><span class="search_link"><?php echo anchor(current_url() . '?region=' . $location->region, '[?]'); ?></span></td>
 		</tr>

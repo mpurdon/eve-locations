@@ -38,7 +38,7 @@
 					<a href="#" id="<?php echo $location->system_id; ?>"><?php echo $location->system; ?></a>
 				</span>
 				<span class="dl_link">
-					<?php echo anchor('http://evemaps.dotlan.net/map/' . str_replace(' ', '_', $location->region) . '/' . $location->system . '#sec', '[dl]'); ?>
+					<a href="http://evemaps.dotlan.net/map/<?php echo str_replace(' ', '_', $location->region) ?>/<?php echo $location->system?>#sec" target="_new">[dl]</a>
 				</span>
 				<span class="search_link">
 					<?php echo anchor(current_url() . '?system=' . $location->system, '[?]'); ?>

@@ -1,4 +1,10 @@
 <div>
+	<ul>
+		<li>Click on a column name to sort</li>
+		<li>Click on a [?] link to filter by that value</li>
+		<li>Click the [bc] link to see the pilot's Battleclinic losses</li>
+		<li>Click on the system name to set that system as your destination</li>
+	</ul>
 	<table>
 	<thead>
 		<tr>

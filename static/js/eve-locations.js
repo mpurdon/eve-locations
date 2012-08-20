@@ -61,6 +61,8 @@ $(document).ready(function() {
 		
 		CCPEVE.setDestination(system_id);
 		
+		alert('Destination set to ' + $(this).text());
+		
 		return false;
 	});
 });

@@ -114,6 +114,12 @@ class Location_model extends CI_Model
 			$station = '(in space)';
 		}
 
+		// Check for duplicate before writing.
+		$query = $this->db->get_where('location', array('pilot'=>$pilot, 'date', $date));
+		if ($query->num_rows() > 0) {
+			return false;
+		}
+
 		$data = array(
 				'pilot' => $pilot,
 				'date' => $date,

@@ -52,7 +52,7 @@ $(document).ready(function() {
 	
 	setTimeout("refreshList()", 300000);
 	
-	$('a.set_system').click(function(event) {
+	$('span.set_system a').click(function(event) {
 		if (typeof CCPEVE == 'undefined') {
 			return false;
 		}

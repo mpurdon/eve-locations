@@ -1,79 +1,98 @@
 body {
-        font-family: sans-serif;
-        font-size: 0.75em;
+    font-family: sans-serif;
+    font-size: 0.75em;
 }
+
 a {
-        text-decoration: none;
+    text-decoration: none;
 }
+
 table {
-        border-collapse:collapse;
-        border:1px solid black;
+    border-collapse: collapse;
+    border: 1px solid black;
 }
+
 th {
-        font-size:1.1em;
-        font-weight:bold;
-        border:1px solid black;
-        padding: 3px;
-        background-color: #FA9E0E;
-        color: #000;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: 1px solid black;
+    padding: 3px;
+    background-color: #FA9E0E;
+    color: #000;
 }
+
 th a {
-        color: #000;
+    color: #000;
 }
+
 th a:visited {
-        color: #000;
+    color: #000;
 }
+
 th.sort_asc:after {
-        content: "↑";
+    content: "↑";
 }
+
 th.sort_desc:after {
-        content: "↓";
+    content: "↓";
 }
+
 td {
-        border:1px solid black;
-        padding: 3px;
+    border: 1px solid black;
+    padding: 3px;
+    text-wrap: nowrap;
 }
-span#refresh_box{
-        float:right;
+
+span#refresh_box {
+    float: right;
 }
+
 span.search_link {
-        float:right;
-        margin-left: 5px;
+    float: right;
+    margin-left: 5px;
 }
+
 span.bc_link {
-        float:right;
+    float: right;
 }
+
 span.dl_link {
-        float:right;
+    float: right;
 }
+
 ul#navigation {
-        list-style:none;
-        padding:0px;
+    list-style: none;
+    padding: 0px;
 }
+
 ul#navigation li {
-        border: 2px solid black;
-        background: #666;
-        color: #fff;
-        display: inline-block;
-        padding: 3px;
-        margin-left:0px;
+    border: 2px solid black;
+    background: #666;
+    color: #fff;
+    display: inline-block;
+    padding: 3px;
+    margin-left: 0px;
 }
+
 ul#navigation li a {
-        text-decoration: none;
-        color: #fff;
+    text-decoration: none;
+    color: #fff;
 }
+
 ul#navigation li a:visited {
-        text-decoration: none;
-        color: #fff;
+    text-decoration: none;
+    color: #fff;
 }
+
 label {
-        display:inline-block;
-        width: 100px;
-        text-align:right;
-        vertical-align:top;
-        margin-right: 5px;
-        padding-top: 4px;
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    vertical-align: top;
+    margin-right: 5px;
+    padding-top: 4px;
 }
+
 textarea {
-        width: 50%;
+    width: 50%;
 }

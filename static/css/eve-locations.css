@@ -40,7 +40,7 @@ th.sort_desc:after {
 td {
     border: 1px solid black;
     padding: 3px;
-    text-wrap: nowrap;
+    white-space: nowrap;
 }
 
 span#refresh_box {

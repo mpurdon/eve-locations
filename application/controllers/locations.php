@@ -1,6 +1,6 @@
 <?php
 
-class Locations extends CI_Controller {
+class Locations extends MY_Controller {
 
 	public function __construct()
 	{
@@ -44,6 +44,7 @@ class Locations extends CI_Controller {
 		$data['sort_dir'] = $sort_dir;
 
 		$this->load->view('templates/header', $data);
+		$this->load->view('templates/navigation', $data);
 		$this->load->view('locations/index', $data);
 		$this->load->view('templates/footer');
 	}
@@ -65,6 +66,7 @@ class Locations extends CI_Controller {
 
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navigation', $data);
 			$this->load->view('locations/create');
 			$this->load->view('templates/footer');
 
@@ -90,6 +92,7 @@ class Locations extends CI_Controller {
 
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navigation', $data);
 			$this->load->view('locations/search');
 			$this->load->view('templates/footer');
 

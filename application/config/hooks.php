@@ -10,7 +10,15 @@
 |
 */
 
-
+/*
+$hook['post_controller_constructor '] = array(
+		'filepath' => 'hooks',
+		'filename' => 'IGBCheck.php',
+		'class' => 'IGBCheck',
+		'function' => 'check',
+		'params' => array(),
+);
+*/
 
 /* End of file hooks.php */
 /* Location: ./application/config/hooks.php */

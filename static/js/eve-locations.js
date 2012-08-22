@@ -27,6 +27,23 @@ function refreshList() {
 	}
 }
 
+function show_destination_set(destination) {
+	
+	var stack_bar_top = {"dir1": "down", "dir2": "right", "push": "top", "spacing1": 0, "spacing2": 0};
+	
+    var opts = {
+        title: "Destination set",
+        text: "Destination has been set to " + destination,
+        addclass: "stack-bar-top",
+        cornerclass: "",
+        width: "100%",
+        stack: stack_bar_top,
+        type: "success,"
+    };
+    
+    $.pnotify(opts);
+}
+
 $(document).ready(function() {
 	if (typeof CCPEVE != 'undefined') {
 		
@@ -34,6 +51,15 @@ $(document).ready(function() {
         var base_url = current_url.substring(0, current_url.indexOf('/', 7));
 		CCPEVE.requestTrust(base_url);
 	}
+	
+	// Set up jQuery UI as the Pines notify styling handler
+	$.pnotify.defaults.styling = "jqueryui";
+	
+	// Don't do a history
+	$.pnotify.defaults.history = false;
+	
+	// Show for 3 seconds
+	$.pnotify.defaults.delay = 3000;
 	
 	$('#do_refresh').change(function(event) {
 		deleteCookie('doRefresh');
@@ -73,13 +99,7 @@ $(document).ready(function() {
 		
 		CCPEVE.setDestination(system_id);
 		
-		var noty = noty({
-			layout: 'top',
-			theme: 'default',
-			type: 'success',
-			timeout: 3000,
-			text: 'Destination set to ' + $(this).text()
-		});
+		show_destination_set($(this).text());
 		
 		return false;
 	});

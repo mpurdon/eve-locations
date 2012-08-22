@@ -6,13 +6,13 @@
 
 	<link rel="stylesheet" type="text/css" href="/static/css/eve-locations.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="/static/css/apprise.min.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/static/css/jquery.pnotify.default.css" media="screen" />
 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.pnotify.min.js"></script>
 	<script type="text/javascript" src="/static/js/apprise-1.5.min.js"></script>
-	<script type="text/javascript" src="/static/js/noty/promise.js"></script>
-	<script type="text/javascript" src="/static/js/noty/jquery.noty.js"></script>
-	<script type="text/javascript" src="/static/js/noty/layouts/top.js"></script>
-	<script type="text/javascript" src="/static/js/noty/themes/default.js"></script>
 
 	<script type="text/javascript" src="/static/js/eve-locations.js"></script>
 

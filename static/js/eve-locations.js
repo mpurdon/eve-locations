@@ -62,9 +62,6 @@ $(document).ready(function() {
 			// Find the pilot's current system
 			
 		}
-		
-		apprise
-		
 	});
 	
 	$('span.set_system a').click(function(event) {
@@ -77,6 +74,9 @@ $(document).ready(function() {
 		CCPEVE.setDestination(system_id);
 		
 		var noty = noty({
+			layout: 'top',
+			theme: 'default',
+			type: 'success',
 			timeout: 3000,
 			text: 'Destination set to ' + $(this).text()
 		});

@@ -19,6 +19,8 @@ class MY_Controller extends CI_Controller
 			return;
 		}
 
+		return;
+
 		// Make sure we are using the IGB
 		if (!array_key_exists('HTTP_EVE_TRUSTED', $_SERVER)) {
 			error_log('Non-IGB attempted to view the site');
@@ -27,8 +29,6 @@ class MY_Controller extends CI_Controller
 		}
 
 		// Make sure the IGB trusts us
-// 		echo '<pre>',var_dump($_SERVER),'</pre>';
-
 		if (!array_key_exists('HTTP_EVE_TRUSTED', $_SERVER) || $_SERVER['HTTP_EVE_TRUSTED'] != 'Yes') {
 			error_log('An untrusted IGB attempted to view the site');
 			$this->load->helper('url');

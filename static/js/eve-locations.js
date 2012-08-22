@@ -29,7 +29,10 @@ function refreshList() {
 
 $(document).ready(function() {
 	if (typeof CCPEVE != 'undefined') {
-		CCPEVE.requestTrust(document.location.href);
+		
+		var current_url = document.location.href;
+        var base_url = current_url.substring(0, current_url.indexOf('/', 7));
+		CCPEVE.requestTrust(base_url);
 	}
 	
 	$('#do_refresh').change(function(event) {
@@ -73,7 +76,10 @@ $(document).ready(function() {
 		
 		CCPEVE.setDestination(system_id);
 		
-		alert('Destination set to ' + $(this).text());
+		var noty = noty({
+			timeout: 3000,
+			text: 'Destination set to ' + $(this).text()
+		});
 		
 		return false;
 	});

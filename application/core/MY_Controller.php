@@ -15,15 +15,24 @@ class MY_Controller extends CI_Controller
 		parent::__construct();
 
 		// Don't redirect the unauthorized page...
-		if($_SERVER['REQUEST_URI'] == '/unauthorized') {
+		if(strpos($_SERVER['REQUEST_URI'],'/unauthorized') === 0) {
 			return;
 		}
 
 		// Make sure we are using the IGB
-		if (!array_key_exists('HTTP_EVE_ALLIANCEID', $_SERVER)) {
+		if (!array_key_exists('HTTP_EVE_TRUSTED', $_SERVER)) {
 			error_log('Non-IGB attempted to view the site');
 			$this->load->helper('url');
-			redirect(site_url('unauthorized'));
+			redirect(site_url('unauthorized/trust'));
+		}
+
+		// Make sure the IGB trusts us
+// 		echo '<pre>',var_dump($_SERVER),'</pre>';
+
+		if (!array_key_exists('HTTP_EVE_TRUSTED', $_SERVER) || $_SERVER['HTTP_EVE_TRUSTED'] != 'Yes') {
+			error_log('An untrusted IGB attempted to view the site');
+			$this->load->helper('url');
+			redirect(site_url('unauthorized/trust'));
 		}
 
 		// Make sure the alliance is correct

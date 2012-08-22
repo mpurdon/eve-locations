@@ -19,9 +19,16 @@ class Pages extends MY_Controller
 		$this->load->view('templates/footer', $data);
 	}
 
-	public function unauthorized()
+	public function unauthorized($trust=null)
 	{
 		$data['title'] = 'Unauthorized Access';
+
+		$data['message'] = 'This site provides intelligence to those who have access. If you are seeing this message, you are not one of them.';
+
+		if (!is_null($trust)) {
+			$data['message'] = 'This site must be viewed in a trusted in-game browser, accept the trust request and <a href="/">try again</a>.';
+		}
+
 		$this->load->view('templates/header', $data);
 		$this->load->view('pages/unauthorized', $data);
 		$this->load->view('templates/footer', $data);

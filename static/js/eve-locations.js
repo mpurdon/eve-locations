@@ -49,8 +49,20 @@ $(document).ready(function() {
 			 $('#do_refresh').attr('checked', 'checked');
 		 }
 	 }	
-	
+
 	setTimeout("refreshList()", 300000);
+
+	$('#add_sighting').click(function(event) {
+		var location = '';
+		
+		if (typeof CCPEVE !== 'undefined') {
+			// Find the pilot's current system
+			
+		}
+		
+		apprise
+		
+	});
 	
 	$('span.set_system a').click(function(event) {
 		if (typeof CCPEVE == 'undefined') {

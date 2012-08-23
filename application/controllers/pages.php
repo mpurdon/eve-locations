@@ -19,6 +19,33 @@ class Pages extends MY_Controller
 		$this->load->view('templates/footer', $data);
 	}
 
+	public function home()
+	{
+		$data['title'] = 'Wartarget Location Tool';
+
+		$this->load->helper('url');
+		$this->load->helper('date');
+
+		$data['fields'] = array(
+				'Pilot' => 'pilot',
+				'When' => 'date',
+				'Station' => 'station',
+				'System' => 'system',
+				'Constellation' => 'constellation',
+				'Region' => 'region'
+		);
+
+		$this->load->model('location_model');
+		$locationRecords = $this->location_model->search(10,0, 'date', 'desc');
+		$data['locations'] = $locationRecords['records'];
+		$data['num_locations'] = $locationRecords['count'];
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/navigation', $data);
+		$this->load->view('pages/home', $data);
+		$this->load->view('templates/footer', $data);
+	}
+
 	public function unauthorized($trust=null)
 	{
 		$data['title'] = 'Unauthorized Access';

@@ -1,6 +1,6 @@
 <ul id="navigation">
 	<li><?php echo anchor('/', 'Home'); ?></li>
-	<li><?php echo anchor('/locations', 'Recent Locations'); ?></li>
+	<li><?php echo anchor('/locations', 'View Locations'); ?></li>
 	<li><?php echo anchor('/locations/search', 'Search Locations'); ?></li>
 	<li><?php echo anchor('/locations/create', 'Add a Location'); ?></li>
 	<li><?php echo anchor('/locations/sighting', 'Add a Sighting', array('id'=>'add_sighting')); ?></li>

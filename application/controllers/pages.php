@@ -26,7 +26,7 @@ class Pages extends MY_Controller
 		$data['message'] = 'This site provides intelligence to those who have access. If you are seeing this message, you are not one of them.';
 
 		if (!is_null($trust)) {
-			$data['message'] = 'This site must be viewed in a trusted in-game browser, accept the trust request and <a href="/">try again</a>.';
+			$data['message'] = 'This site must be viewed in a trusted in-game browser, accept the trust request and <a href="/">try again</a> or add your IP to the whitelist.';
 		}
 
 		$this->load->view('templates/header', $data);

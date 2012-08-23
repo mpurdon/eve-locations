@@ -19,6 +19,11 @@ class MY_Controller extends CI_Controller
 			return;
 		}
 
+		$this->load->model('whitelist_model');
+		if ($this->whitelist_model->isValidIP()) {
+			return;
+		}
+
 		// Make sure we are using the IGB
 		if (!array_key_exists('HTTP_EVE_TRUSTED', $_SERVER)) {
 			error_log('Non-IGB attempted to view the site');

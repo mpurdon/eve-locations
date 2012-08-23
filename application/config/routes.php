@@ -44,6 +44,7 @@ $route['locations/(:any)/(:any)/(:num)'] = 'locations/index/$1/$2/$3';
 $route['locations/(:any)/(:any)'] = 'locations/index/$1/$2';
 $route['locations/search'] = 'locations/search';
 $route['locations'] = 'locations';
+$route['whitelist'] = 'whitelist/add';
 $route['unauthorized/trust'] = 'pages/unauthorized/trust';
 $route['unauthorized'] = 'pages/unauthorized';
 $route['(:any)'] = 'pages/view/$1';

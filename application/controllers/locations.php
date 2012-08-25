@@ -83,14 +83,16 @@ class Locations extends MY_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$search = array_filter($this->input->post());
-		unset($search['action']);
+		if($this->input->post()) {
+			$search = array_filter();
+			unset($search['action']);
 
-		if (count($search) > 0) {
-			$query_string = '?' . http_build_query($search);
+			if (count($search) > 0) {
+				$query_string = '?' . http_build_query($search);
 
-			redirect('locations/date/desc' . $query_string);
-			return;
+				redirect('locations/date/desc' . $query_string);
+				return;
+			}
 		}
 
 		$data['title'] = 'Search for locations';

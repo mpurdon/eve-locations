@@ -83,10 +83,6 @@ class Locations extends MY_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('system', 'System', 'alpha_dash');
-		$this->form_validation->set_rules('constellation', 'Constellation', 'alpha_dash');
-		$this->form_validation->set_rules('region', 'Region', 'alpha_dash');
-
 		$data['title'] = 'Search for locations';
 
 		if ($this->form_validation->run() === FALSE) {

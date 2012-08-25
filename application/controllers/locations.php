@@ -84,7 +84,7 @@ class Locations extends MY_Controller {
 		$this->load->library('form_validation');
 
 		if($this->input->post()) {
-			$search = array_filter();
+			$search = array_filter($this->input->post());
 			unset($search['action']);
 
 			if (count($search) > 0) {

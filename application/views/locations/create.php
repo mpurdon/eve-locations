@@ -1,6 +1,7 @@
 <h2>Record a War Target Location</h2>
 <p>Paste the notification from your locator agent into the form below.</p>
 
+<p style="color:red;"><?php echo $save_error; ?></p>
 <?php echo validation_errors(); ?>
 
 <?php echo form_open('locations/create'); ?>

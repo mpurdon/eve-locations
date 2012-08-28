@@ -61,6 +61,7 @@ class Locations extends MY_Controller {
 		$this->load->library('form_validation');
 
 		$data['title'] = 'Create a location record';
+		$data['save_error'] = '';
 
 		$this->form_validation->set_rules('notice', 'Notice', 'required');
 
@@ -73,8 +74,50 @@ class Locations extends MY_Controller {
 			return;
 		}
 
-		$this->location_model->set_location();
-		$this->load->view('locations/success');
+		try {
+			$this->location_model->add_location();
+			$this->load->view('locations/success');
+		} catch (Exception $e) {
+			$data['save_error'] = $e->getMessage();
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navigation', $data);
+			$this->load->view('locations/create');
+			$this->load->view('templates/footer');
+		}
+	}
+
+	public function sighting()
+	{
+		$this->load->helper('url');
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$data['title'] = 'Create a sighting record';
+		$data['save_error'] = '';
+
+		$this->form_validation->set_rules('pilot', 'Pilot', 'required');
+		$this->form_validation->set_rules('system', 'System', 'required');
+		$this->form_validation->set_rules('eve-date', 'Date', 'required');
+
+		if ($this->form_validation->run() === FALSE) {
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navigation', $data);
+			$this->load->view('locations/sighting');
+			$this->load->view('templates/footer');
+
+			return;
+		}
+
+		try {
+			$this->location_model->add_sighting();
+			$this->load->view('locations/success');
+		} catch (Exception $e) {
+			$data['save_error'] = $e->getMessage();
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navigation', $data);
+			$this->load->view('locations/sighting');
+			$this->load->view('templates/footer');
+		}
 	}
 
 	public function search()

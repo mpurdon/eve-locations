@@ -44,9 +44,57 @@ function show_destination_set(destination) {
     $.pnotify(opts);
 }
 
+function updateEveDateTime(success) {
+    var url = 'http://json-time.appspot.com/time.json?tz=GMT';
+    var ud = 'json' + (+new Date());
+
+    window[ud]= function(o){
+        success && success(new Date(o.datetime));
+    };
+
+    document.getElementsByTagName('head')[0].appendChild((function(){
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.src = url + '&callback=' + ud;
+        return s;
+    })());
+}
+
+function notifyUpdates() {
+	
+	var updateMessages = '';
+	var releaseNotes = new Array();
+	
+	releaseNotes[20120828] = '<h4>Release 2012-08-28 Added the ability to record a wt sighting.</h4><ul><li>Using the IGB the form is filled in with the  the current system information</li><li>You can specify wormhole as the location</li><li>Adding the ship type will have it show up on the locations list</li><ul>';
+
+	var lastNotificationCookie = getCookie("updateNotified");
+
+	if (lastNotificationCookie == null || lastNotificationCookie == '') {
+		lastNotificationCookie = 0;
+	}
+
+	var mostRecentUpdate = lastNotificationCookie;
+	for (var releaseDate in releaseNotes) {
+		if (releaseDate > lastNotificationCookie) {
+			updateMessages += releaseNotes[releaseDate];
+			mostRecentUpdate = releaseDate;
+		}
+	}
+
+	if (lastNotificationCookie != mostRecentUpdate) {
+		setCookie('updateNotified', mostRecentUpdate, 365);
+	}
+
+	if (updateMessages.length > 0) {
+		updateMessages = '<h3>Updates since your last visit</h3>' + updateMessages;
+		apprise(updateMessages);
+	}
+}
+
 $(document).ready(function() {
+	
+	// Handle browser trust
 	if (typeof CCPEVE != 'undefined') {
-		
 		var current_url = document.location.href;
         var base_url = current_url.substring(0, current_url.indexOf('/', 7));
 		CCPEVE.requestTrust(base_url);
@@ -77,19 +125,13 @@ $(document).ready(function() {
 		 if (refreshCookie === 'true') {
 			 $('#do_refresh').attr('checked', 'checked');
 		 }
-	 }	
+	 }
+	 
+	 // Tell the user about new features
+	 notifyUpdates();
 
 	setTimeout("refreshList()", 300000);
 
-	$('#add_sighting').click(function(event) {
-		var location = '';
-		
-		if (typeof CCPEVE !== 'undefined') {
-			// Find the pilot's current system
-			
-		}
-	});
-	
 	$('span.set_system a').click(function(event) {
 		if (typeof CCPEVE == 'undefined') {
 			return false;
@@ -102,5 +144,32 @@ $(document).ready(function() {
 		show_destination_set($(this).text());
 		
 		return false;
+	});
+	
+	$('#submit-sighting').click(function(event) {
+		// We have to update the date so that it's current before we submit the sighting form
+		updateEveDateTime(function(serverDate){
+			var GMTDateTime = new Date(serverDate);
+			var datePart = GMTDateTime.toISOString().match( /([0-9]{4}-[0-9]{2}-[0-9]{2})/ )[0];
+			var timePart = GMTDateTime.toISOString().match( /([0-9]{2}:[0-9]{2}:[0-9]{2})/ )[0];
+			var eveDateTime = datePart + ' ' + timePart;
+			
+			$('<input>').attr({
+			    type: 'hidden',
+			    id: 'eve-date',
+			    name: 'eve-date',
+			    value: eveDateTime  
+			}).appendTo('#form-location-sighting');
+		    
+		    $('#form-location-sighting').submit();
+		});
+	});
+	
+	$('#in-wormhole').click(function(event){
+		event.preventDefault();
+		$('#station').val('(in space)');
+		$('#system').val('wormhole');
+		$('#constellation').val('');
+		$('#region').val('');
 	});
 });

@@ -21,7 +21,7 @@ class Location_model extends CI_Model
 
 		$query = $this->db->select('location.*, system.system_id as system_id', false)
 		                  ->from('location')
-		                  ->join('system', 'system.system_name = location.system')
+		                  ->join('system', 'system.system_name = location.system', 'left')
 		                  ->limit($limit, $offset)
 						  ->order_by($sort_by, $sort_dir);
 
@@ -86,7 +86,7 @@ class Location_model extends CI_Model
 		return $query->row_array();
 	}
 
-	public function set_location()
+	public function add_location()
 	{
 		$this->load->helper('url');
 
@@ -117,7 +117,7 @@ class Location_model extends CI_Model
 		// Check for duplicate before writing.
 		$query = $this->db->get_where('location', array('pilot'=>$pilot, 'date'=> $date));
 		if ($query->num_rows() > 0) {
-			return false;
+			throw new InvalidArgumentException('Location for ' . $pilot . ' was already recorded at ' . $date);
 		}
 
 		$data = array(
@@ -130,6 +130,58 @@ class Location_model extends CI_Model
 				'ship_type' => 'unknown'
 		);
 
-		return $this->db->insert('location', $data);
+		$this->db->insert('location', $data);
+
+		if($this->db->affected_rows() == 0) {
+			throw new InvalidArgumentException('Could not store the location for :' . implode(',', $data));
+		}
+	}
+
+	/**
+	 * Similar to add_location but uses regular form fields rather than the eve notice
+	 *
+	 * @throws InvalidArgumentException
+	 */
+	public function add_sighting()
+	{
+		$this->load->helper('url');
+
+		$pilot = $this->input->post('pilot');
+		$date = $this->input->post('eve-date');
+		$station = $this->input->post('station');
+		$system = $this->input->post('system');
+		$constellation = $this->input->post('constellation');
+		$region = $this->input->post('region');
+		$ship = $this->input->post('ship');
+
+		if(strlen($station) == 0) {
+			$station = '(in space)';
+		}
+
+		if(strlen($ship) == 0) {
+			$ship = 'unknown';
+		}
+
+		// Check for duplicate before writing.
+		$query = $this->db->get_where('location', array('pilot'=>$pilot, 'date'=> $date));
+		if ($query->num_rows() > 0) {
+			throw new InvalidArgumentException('Sighting for ' . $pilot . ' was already recorded at ' . $date);
+		}
+
+		$data = array(
+				'pilot' => $pilot,
+				'date' => $date,
+				'station' => $station,
+				'system' => $system,
+				'constellation' => $constellation,
+				'region' => $region,
+				'ship_type' => $ship
+		);
+
+		$this->db->insert('location', $data);
+
+		if($this->db->affected_rows() == 0) {
+			throw new InvalidArgumentException('Could not store the location for :' . implode(',', $data));
+		}
 	}
 }

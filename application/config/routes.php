@@ -38,6 +38,7 @@
 |
 */
 
+$route['locations/sighting'] = 'locations/sighting';
 $route['locations/create'] = 'locations/create';
 // $route['locations/(:any)'] = 'locations/view/$1';
 $route['locations/(:any)/(:any)/(:num)'] = 'locations/index/$1/$2/$3';

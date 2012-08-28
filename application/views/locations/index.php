@@ -23,7 +23,7 @@
 	<?php foreach ($locations as $location):?>
 		<tr>
 			<td>
-				<?php echo $location->pilot; ?>
+				<?php echo $location->pilot; ?><?php if (strlen($location->ship_type) > 0 && $location->ship_type != 'unknown'): ?>&nbsp;&lt;<?php echo $location->ship_type; ?>&gt;<?php endif; ?>
 				<span class="bc_link">
 					<a href="http://eve.battleclinic.com/killboard/combat_record.php?type=player&name=<?php echo rawurlencode($location->pilot); ?>#losses" target="_new">[bc]</a>
 				</span>

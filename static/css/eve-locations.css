@@ -60,6 +60,26 @@ span.dl_link {
     float: right;
 }
 
+.appriseInner h3 {
+	margin: 3px;
+    padding-bottom: 5px;
+    color: #FA9E0E;
+}
+
+.appriseInner h4 {
+	margin: 3px;
+    color: #FA9E0E;
+}
+
+.appriseInner ul {
+	margin: 0px;
+    padding: 0px;
+}
+
+.appriseInner li {
+    margin-left: 25px;
+}
+
 ul#navigation {
     list-style: none;
     padding: 0px;

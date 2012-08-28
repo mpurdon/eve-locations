@@ -116,3 +116,7 @@ label {
 textarea {
     width: 50%;
 }
+
+div#footer {
+	text-align: center;
+}

@@ -141,7 +141,7 @@ $(document).ready(function() {
         var base_url = current_url.substring(0, current_url.indexOf('/', 7));
         var timezone_url = base_url + '/time-by-zone/GMT';
 		
-        $.getJSON('time-by-zone/GMT', function(serverDate){
+        $.getJSON('/time-by-zone/GMT', function(serverDate){
 			var GMTDateTime = new Date(serverDate.datetime);
 			var datePart = GMTDateTime.toISOString().match( /([0-9]{4}-[0-9]{2}-[0-9]{2})/ )[0];
 			var timePart = GMTDateTime.toISOString().match( /([0-9]{2}:[0-9]{2}:[0-9]{2})/ )[0];

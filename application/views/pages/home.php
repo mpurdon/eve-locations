@@ -1,5 +1,5 @@
 <div>
-	<p>To view the entire list of locations </p>
+	<p>To view the entire list of locations click on View Locations above.</p>
 </div>
 <div>
 	<table>

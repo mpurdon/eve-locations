@@ -44,22 +44,6 @@ function show_destination_set(destination) {
     $.pnotify(opts);
 }
 
-function updateEveDateTime(success) {
-    var url = 'http://json-time.appspot.com/time.json?tz=GMT';
-    var ud = 'json' + (+new Date());
-
-    window[ud]= function(o){
-        success && success(new Date(o.datetime));
-    };
-
-    document.getElementsByTagName('head')[0].appendChild((function(){
-        var s = document.createElement('script');
-        s.type = 'text/javascript';
-        s.src = url + '&callback=' + ud;
-        return s;
-    })());
-}
-
 function notifyUpdates() {
 	
 	var updateMessages = '';
@@ -152,8 +136,13 @@ $(document).ready(function() {
 	
 	$('#submit-sighting').click(function(event) {
 		// We have to update the date so that it's current before we submit the sighting form
-		updateEveDateTime(function(serverDate){
-			var GMTDateTime = new Date(serverDate);
+		
+		var current_url = document.location.href;
+        var base_url = current_url.substring(0, current_url.indexOf('/', 7));
+        var timezone_url = base_url + '/time-by-zone/GMT';
+		
+        $.getJSON('time-by-zone/GMT', function(serverDate){
+			var GMTDateTime = new Date(serverDate.datetime);
 			var datePart = GMTDateTime.toISOString().match( /([0-9]{4}-[0-9]{2}-[0-9]{2})/ )[0];
 			var timePart = GMTDateTime.toISOString().match( /([0-9]{2}:[0-9]{2}:[0-9]{2})/ )[0];
 			var eveDateTime = datePart + ' ' + timePart;

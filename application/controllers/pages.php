@@ -60,4 +60,18 @@ class Pages extends MY_Controller
 		$this->load->view('pages/unauthorized', $data);
 		$this->load->view('templates/footer', $data);
 	}
+
+	public function time_by_zone($zone)
+	{
+		$oldTimezone = date_default_timezone_get();
+		$success = date_default_timezone_set($zone);
+
+		$data = array(
+			'timezone' => $zone,
+			'datetime' => date('Y-m-d H:i:s'),
+			'success' => $success
+		);
+
+		echo json_encode($data);
+	}
 }

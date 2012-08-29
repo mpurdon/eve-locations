@@ -48,6 +48,7 @@ $route['locations'] = 'locations';
 $route['whitelist'] = 'whitelist/add';
 $route['unauthorized/trust'] = 'pages/unauthorized/trust';
 $route['unauthorized'] = 'pages/unauthorized';
+$route['time-by-zone/(:any)'] = 'pages/time_by_zone/$1';
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = "pages/home";
 

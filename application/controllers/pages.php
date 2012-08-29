@@ -72,6 +72,8 @@ class Pages extends MY_Controller
 			'success' => $success
 		);
 
+		date_default_timezone_set($oldTimezone);
+
 		echo json_encode($data);
 	}
 }

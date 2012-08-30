@@ -50,7 +50,8 @@ function notifyUpdates() {
 	var releaseNotes = new Array();
 	
 	releaseNotes[20120828] = '<h4>Release 2012-08-28 Added the ability to record a wt sighting.</h4><ul><li>Using the IGB the form is filled in with the  the current system information</li><li>You can specify wormhole as the location</li><li>Adding the ship type will have it show up on the locations list</li><ul>';
-
+	releaseNotes[20120830] = '<h4>Release 2012-08-30 Bug Fixes.</h4><ul><li>A bug adding a location when the pilot name contained non-standard characters was fixed.</li><ul>';
+	
 	var lastNotificationCookie = getCookie("updateNotified");
 
 	if (lastNotificationCookie == null || lastNotificationCookie == '') {

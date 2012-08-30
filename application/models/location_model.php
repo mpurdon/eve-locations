@@ -93,7 +93,7 @@ class Location_model extends CI_Model
 		$notice = $this->input->post('notice');
 
 		// Get the pilot from the notice
-		$pilotPattern = "#I found ([a-zA-Z0-9-_ ]+) for you.#";
+		$pilotPattern = "#I found (.*?) for you.#";
 		preg_match($pilotPattern, $notice, $matches);
 
 		$pilot = $matches[1];

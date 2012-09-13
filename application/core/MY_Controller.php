@@ -38,9 +38,12 @@ class MY_Controller extends CI_Controller
 			redirect(site_url('unauthorized/trust'));
 		}
 
-		// Make sure the alliance is correct
-		if($_SERVER['HTTP_EVE_ALLIANCEID'] != '1680888152') {
-			error_log('Non-MYM8 pilot "' . $_SERVER['HTTP_EVE_CHARNAME'] . '" attempted to view the site');
+		$alliances = $this->config->item('whitelisted_alliances');
+		$corporations = $this->config->item('whitelisted_corporations');
+
+		// Make sure the alliance or corporation is allowed
+		if((isset($_SERVER['HTTP_EVE_ALLIANCEID'], $alliances) && !in_array($_SERVER['HTTP_EVE_ALLIANCEID'], $alliances)) and !in_array($_SERVER['HTTP_EVE_CORPID'], $corporations)) {
+			error_log('Non-whitelisted pilot "' . $_SERVER['HTTP_EVE_CHARNAME'] . '" attempted to view the site');
 			$this->load->helper('url');
 			redirect(site_url('unauthorized'));
 		}

@@ -122,3 +122,7 @@ textarea {
 div#footer {
 	text-align: center;
 }
+
+.error {
+	color: #900;
+}

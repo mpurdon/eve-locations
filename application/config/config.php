@@ -357,6 +357,20 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/*
+ |--------------------------------------------------------------------------
+| Whitelists
+|--------------------------------------------------------------------------
+|
+| The Eve alliances and corps that are allowed to access the site.
+*/
+$config['whitelisted_alliances'] = array(
+		'1680888152', // Marmite Collective
+);
+
+$config['whitelisted_corporations'] = array(
+		'98099393', // Proper Villains
+);
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
